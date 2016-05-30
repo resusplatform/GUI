@@ -1,0 +1,5 @@
+<settings>
+	<core>D:\resusParts\resusCore\build-resusCore-Desktop_Qt_5_2_1_MSVC2012_32bit-Debug\debug\resusCore.exe</core>
+	<chart>D:\resusParts\resusCharts\build-resusCharts-Desktop_Qt_5_2_1_MSVC2012_32bit-Debug\debug\resusCharts.exe</chart>
+	<export>D:\resusParts\resusExport\build-ResusExport-Desktop_Qt_5_2_1_MSVC2012_32bit-Debug\debug\resusExport.exe</export>
+</settings>

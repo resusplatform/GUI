@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            class="de.clausthal.tu.ielf.resus.wizards.NewResusProjectWizard"
+            id="de.tu.clausthal.ielf.resus.wizards.newResusProjectWizard"
+            name="New ReSUS Project"
+            project="false">
+      </wizard>
+      <wizard
+            class="de.clausthal.tu.ielf.resus.wizards.NewSampleWizard"
+            id="de.tu.clausthal.ielf.resus.wizards.NewSampleWizard"
+            name="New Sample Wizard">
+      </wizard>
+   </extension>
+
+     <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            default="true"
+            name="%RESUS_example_graphical_editor_name"
+            extensions="xml"
+            icon="logo.gif"
+            class="org.eclipse.ui.views.properties.tabbed.resus.TabbedPropertiesReSUSEditor"
+            contributorClass="de.clausthal.tu.ielf.resusdesigner.actions.ResusActionBarContributor"
+            id="org.eclipse.ui.views.properties.tabbed.resus.TabbedPropertiesReSUSEditor">
+      </editor>
+   </extension>
+   
+
+
+
+ <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            typeMapper="org.eclipse.ui.views.properties.tabbed.resus.properties.ResusElementTypeMapper"
+            contributorId="org.eclipse.ui.views.properties.tabbed.resus.TabbedPropertiesReSUSEditor"
+            labelProvider="org.eclipse.ui.views.properties.tabbed.resus.properties.ResusElementLabelProvider">
+         <propertyCategory
+               category="other">
+         </propertyCategory>
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.ui.views.properties.tabbed.resus.TabbedPropertiesReSUSEditor">
+         <propertyTab
+               label="Advanced"
+               category="other"
+               afterTab="logic.tab.Size"
+               id="logic.tab.Advanced">
+         </propertyTab>
+         <propertyTab
+               label="Configurations"
+               category="other"
+               id="resus.tab.inputProvider.configurations">
+         </propertyTab>
+         <propertyTab
+               label="Size"
+               category="other"
+               afterTab="logic.tab.Location"
+               id="logic.tab.Size">
+         </propertyTab>
+         <propertyTab
+               category="other"
+               id="logic.tab.GeneralInfos"
+               label="General Information">
+         </propertyTab>
+         <propertyTab
+               afterTab="logic.tab.GeneralInfos"
+               category="other"
+               id="logic.tab.workingDir"
+               label="Working Directory">
+         </propertyTab>
+         <propertyTab
+               afterTab="logic.tab.workingDir"
+               category="other "
+               id="logic.tab.modelExecutor"
+               label="Executor ">
+         </propertyTab>
+         <propertyTab
+               afterTab="logic.tab.modelExecutor"
+               category="other"
+               id="logic.tab.modelInputTemplates"
+               label="Input Templates">
+         </propertyTab>
+         <propertyTab
+               category="other"
+               id="logic.tab.resultConverter"
+               label="Result Converter">
+         </propertyTab>
+         <propertyTab
+               afterTab="logic.tab.resultConverter"
+               category="other"
+               id="logic.tab.resultConverterExecutor"
+               label="Executor">
+         </propertyTab>
+         <propertyTab
+               afterTab="logic.tab.resultConverterExecutor"
+               category="other"
+               id="logic.tab.resultConverterRegex"
+               label="Regex">
+         </propertyTab>
+         <propertyTab
+               afterTab="logic.tab.resultConverterRegex"
+               category="other"
+               id="logic.tab.resultConverterOutput"
+               label="Output Management">
+         </propertyTab>
+         <propertyTab
+               afterTab="logic.tab.resultConverterRegex"
+               category="other"
+               id="logic.tab.resultConverterResults"
+               label="Results">
+         </propertyTab>
+         <propertyTab
+               afterTab="logic.tab.modelInputTemplates"
+               category="other"
+               id="logic.tab.ModelOutputFiles"
+               label="Output Files">
+         </propertyTab>
+         <propertyTab
+               afterTab="logic.tab.ModelOutputFiles"
+               category="other "
+               id="logic.tab.modelExecutorLogFile"
+               label="Log File">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.ui.views.properties.tabbed.resus.TabbedPropertiesReSUSEditor">
+         <propertySection
+               class="org.eclipse.ui.views.properties.tabbed.resus.properties.InputProvider.InputProviderConfigSection"
+               id="resus.section.inputProvider.configurations"
+               tab="resus.tab.inputProvider.configurations">
+            <input
+                  type="de.clausthal.tu.ielf.resusdesigner.model.InputProvider">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.ui.views.properties.tabbed.resus.properties.Model.ModelGeneralInfoSection"
+               id="logic.section.GeneralInfos"
+               tab="logic.tab.GeneralInfos">
+            <input
+                  type="de.clausthal.tu.ielf.resusdesigner.model.ResusModel">
+            </input>
+         </propertySection>
+         <propertySection
+               afterSection="logic.section.GeneralInfos"
+               class="org.eclipse.ui.views.properties.tabbed.resus.properties.Model.ModelWorkingDirSection"
+               filter="org.eclipse.ui.views.properties.tabbed.resus.properties.Model.ModelFilter"
+               id="logic.section.modelWorkingDir"
+               tab="logic.tab.workingDir">
+            <input
+                  type="de.clausthal.tu.ielf.resusdesigner.model.ResusModel">
+            </input>
+         </propertySection>
+         <propertySection
+               afterSection="logic.section.modelWorkingDir"
+               class="org.eclipse.ui.views.properties.tabbed.resus.properties.Model.ModelExecutorSection"
+               filter="org.eclipse.ui.views.properties.tabbed.resus.properties.Model.ModelFilter"
+               id="logic.section.modelExecutor"
+               tab="logic.tab.modelExecutor">
+            <input
+                  type="de.clausthal.tu.ielf.resusdesigner.model.ResusModel">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.ui.views.properties.tabbed.resus.properties.ResultConverter.ModelResultConverter"
+               id="logic.section.resultConverter"
+               tab="logic.tab.resultConverter">
+            <input
+                  type="de.clausthal.tu.ielf.resusdesigner.model.ResultConverter">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.ui.views.properties.tabbed.resus.properties.ResultConverter.ModelResultConverterRegex"
+               id="logic.section.resultConverterRegex"
+               tab="logic.tab.resultConverterRegex">
+            <input
+                  type="de.clausthal.tu.ielf.resusdesigner.model.ResultConverter">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.ui.views.properties.tabbed.resus.properties.Model.ModelOutputFiles"
+               filter="org.eclipse.ui.views.properties.tabbed.resus.properties.Model.ModelFilter"
+               id="logic.section.ModelOutputFiles"
+               tab="logic.tab.ModelOutputFiles">
+         </propertySection>
+         <propertySection
+               class="org.eclipse.ui.views.properties.tabbed.resus.properties.ResultConverter.ModelResultConverterOutput"
+               id="logic.section.resultConverterOutput"
+               tab="logic.tab.resultConverterOutput">
+            <input
+                  type="de.clausthal.tu.ielf.resusdesigner.model.ResultConverter">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.ui.views.properties.tabbed.resus.properties.Model.ModelExecutorLogFileSection"
+               filter="org.eclipse.ui.views.properties.tabbed.resus.properties.Model.ModelFilter"
+               id="logic.section.modelExecutorLogFile"
+               tab="logic.tab.modelExecutorLogFile">
+            <input
+                  type="de.clausthal.tu.ielf.resusdesigner.model.ResusModel">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.ui.views.properties.tabbed.resus.properties.ResultConverter.ModelResultConverterExecutor"
+               id="logic.section.resultConverterExecutor"
+               tab="logic.tab.resultConverterExecutor">
+            <input
+                  type="de.clausthal.tu.ielf.resusdesigner.model.ResultConverter">
+            </input>
+         </propertySection>
+         <propertySection
+               afterSection="logic.section.modelWorkingDir"
+               class="org.eclipse.ui.views.properties.tabbed.resus.properties.Model.ModelInputTemplatesSection"
+               filter="org.eclipse.ui.views.properties.tabbed.resus.properties.Model.ModelFilter"
+               id="logic.section.modelInputFileTemplates"
+               tab="logic.tab.modelInputTemplates">
+         </propertySection>
+      </propertySections>
+   </extension>
+   
+
+ <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="resusPerspective.ResusPerspectiveFactory"
+            fixed="true"
+            icon="logo.gif"
+            id="SamplePerspective.resusDesigner"
+            name="Resus Model Designer">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="SamplePerspective.resusDesigner">
+             
+             <newWizardShortcut
+               id="de.tu.clausthal.ielf.resus.wizards.newResusProjectWizard">
+         </newWizardShortcut>
+            <view
+                  closeable="false"
+                  id="org.eclipse.jdt.ui.PackageExplorer"
+                  minimized="false"
+                  moveable="false"
+                  ratio="0.25"
+                  relationship="left"
+                  relative="org.eclipse.ui.editorss"
+                  visible="true">
+            </view>
+             <view
+                   closeable="false"
+                   id="org.eclipse.gef.ui.palette_view"
+                   moveable="false"
+                   ratio="0.3"
+                   relationship="bottom"
+                   relative="org.eclipse.jdt.ui.PackageExplorer"
+                   visible="true">
+             </view>
+             <view
+                   closeable="false"
+                   id="org.eclipse.ui.views.ContentOutline"
+                   moveable="false"
+                   relationship="bottom"
+                   relative="org.eclipse.gef.ui.palette_view"
+                   visible="true">
+            </view>
+ 
+            <view
+                  closeable="false"
+                  id="org.eclipse.ui.views.PropertySheet"
+                  minimized="false"
+                  moveable="false"
+                  ratio="0.65"
+                  relationship="bottom"
+                  relative="org.eclipse.ui.editorss"
+                  visible="true">
+            </view>
+             <view
+                   closeable="false"
+                   id="org.eclipse.ui.console.ConsoleView"
+                   minimized="false"
+                   moveable="false"
+                   ratio="0.65"
+                   relationship="stack"
+                   relative="org.eclipse.ui.views.PropertySheet"
+                   visible="true">
+             </view>
+             <view
+                   closeable="false"
+                   id="org.eclipse.ui.views.ProgressView"
+                   minimized="false"
+                   moveable="false"
+                   ratio="0.65"
+                   relationship="stack"
+                   relative="org.eclipse.ui.views.PropertySheet"
+                   visible="true">
+             </view>
+             <view
+                   closeable="false"
+                   id="de.cluasthal.tu.ielf.resus.views.OutPutView"
+                   minimized="false"
+                   moveable="false"
+                   ratio="0.65"
+                   relationship="stack"
+                   relative="org.eclipse.ui.views.PropertySheet"
+                   visible="true">
+             </view>
+
+      </perspectiveExtension>
+      
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="resus.commands.category"
+            name="Resus Commands">
+      </category>
+      <command
+            categoryId="resus.commands.category"
+            id="de.clausthal.tu.ielf.resus.handlerSingle"
+            name="Run Resus Simulation">
+      </command>
+      <command
+            categoryId="resus.commands.category"
+            id="de.clausthal.tu.ielf.resus.handlerParallel"
+            name="Run Resus Simulation Parallel">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="resus.hanlders.singlesimulate"
+            commandId="de.clausthal.tu.ielf.resus.handlerSingle">
+      </handler>
+      <handler
+            class="resus.hanlders.multiSimulate"
+            commandId="de.clausthal.tu.ielf.resus.handlerParallel">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="de.clausthal.tu.ielf.resus.handlerSingle"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+6">
+      </key>
+      <key
+            commandId="de.clausthal.tu.ielf.resus.handlerParallel"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+7">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="resus.menus.simulateMenu"
+               label="Run Resus Model"
+               mnemonic="M">
+            <command
+                  commandId="de.clausthal.tu.ielf.resus.handlerParallel"
+                  id="resus.menus.simulationCommandParallel"
+                  label="parallel run"
+                  mnemonic="S"
+                  style="push">
+            </command>
+            <command
+                  commandId="de.clausthal.tu.ielf.resus.handlerSingle"
+                  id="resus.menus.simulationCommand"
+                  label="single run"
+                  mnemonic="S"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="resus.toolbars.ResusRunToolbar">
+            <command
+                  commandId="de.clausthal.tu.ielf.resus.handlerSingle"
+                  icon="logo.gif"
+                  id="de.clausthal.tu.ielf.resusdesinger.commands.runSingleProcessCommand"
+                  tooltip="Run Resus Model (single Process)">
+            </command>
+            <command
+                  commandId="de.clausthal.tu.ielf.resus.handlerParallel"
+                  icon="ParallelTasks.ico"
+                  id="de.clausthal.tu.ielf.resusdesinger.commands.runMultiProcessCommand"
+                  style="push"
+                  tooltip="Run Resus Model (single Process)">
+            </command>
+         </toolbar>
+      </menuContribution>
+      
+      
+      
+      
+      
+      
+   </extension>
+
+
+<extension
+      point="org.eclipse.ui.views">
+   <category
+         id="de.cluasthal.tu.ielf.resus"
+         name="resusViews">
+   </category>
+   <view
+         allowMultiple="false"
+         category="de.cluasthal.tu.ielf.resus"
+         class="de.clausthal.tu.ielf.resus.views.OutputView"
+         icon="chartsIcon.gif"
+         id="de.cluasthal.tu.ielf.resus.views.OutPutView"
+         name="Output Viewer"
+         restorable="true">
+   </view>
+</extension>
+<extension
+      point="org.eclipse.help.contexts">
+   <contexts
+         file="contexts.xml">
+   </contexts>
+</extension>
+ 
+
+
+
+
+
+</plugin>
